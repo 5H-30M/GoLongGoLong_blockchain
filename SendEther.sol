@@ -1,22 +1,14 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: GPL-3.0
+
 pragma solidity ^0.8.0;
 
 contract EtherTransfer {
-    function sendEther(address payable recipient) external payable {
-        require(msg.value > 0, "Amount must be greater than zero");
-        require(address(this).balance >= msg.value, "Contract does not have enough balance");
+    function sendTokens(address payable _to, uint256 _value) external payable {
+        require(_value > 0, "Amount must be greater than zero");
+        require(address(this).balance >= _value, "Contract does not have enough balance");
 
-        recipient.transfer(msg.value);
+        _to.transfer(_value);
     }
-
-
-// pragma solidity ^0.8.0;
-
-// contract EtherTransfer {
-//     function sendEther(address payable recipient, uint256 amountInWei) external payable {
-//         require(amountInWei > 0, "Amount must be greater than zero");
-//         require(msg.value >= amountInWei, "Insufficient balance");
-
-//         recipient.transfer(amountInWei);
-//     }
 }
+
+//transaction id: 0x8a3dcbacfae4ba913d2740780dfe3164cd4d717383ca59ce60a61b2131e04be5
